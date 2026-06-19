@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://erwantall.github.io/sports-v-com/sitemap.xml

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v体育 · 轻量导航</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fafaf8;
+            color: #1e2a2f;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.7;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+            width: 100%;
+        }
+
+        /* 顶部导航 */
+        .nav {
+            padding: 28px 0 12px;
+            border-bottom: 1px solid #e5e7e3;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 8px 12px;
+        }
+
+        .nav-brand {
+            font-weight: 500;
+            font-size: 1.15rem;
+            letter-spacing: 0.5px;
+            color: #2b3b41;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #4d6159;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #0f1f1a;
+        }
+
+        /* 核心介绍 hero */
+        .hero {
+            padding: 64px 0 48px;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 450;
+            letter-spacing: -0.01em;
+            margin-bottom: 18px;
+            color: #1d2b2b;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            color: #3f4e4b;
+            max-width: 600px;
+        }
+
+        .hero .highlight-link {
+            background: #edefe9;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #1d2b2b;
+            text-decoration: none;
+            font-weight: 450;
+            transition: background 0.2s;
+        }
+
+        .hero .highlight-link:hover {
+            background: #d6dbd1;
+        }
+
+        /* 三个场景模块 */
+        .scenes {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            margin: 28px 0 48px;
+        }
+
+        .scene-card {
+            background: #ffffff;
+            border: 1px solid #e8ebe5;
+            border-radius: 12px;
+            padding: 28px 30px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .scene-card:hover {
+            border-color: #c6cfc3;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+        }
+
+        .scene-card h3 {
+            font-size: 1.25rem;
+            font-weight: 480;
+            margin-bottom: 10px;
+            color: #263c38;
+            letter-spacing: -0.01em;
+        }
+
+        .scene-card p {
+            font-size: 0.98rem;
+            color: #3f524b;
+        }
+
+        .scene-card .tag {
+            display: inline-block;
+            background: #f0f2eb;
+            color: #3b554a;
+            font-size: 0.75rem;
+            padding: 2px 12px;
+            border-radius: 20px;
+            margin-top: 12px;
+            letter-spacing: 0.3px;
+        }
+
+        /* 常见说明 / FAQ 摘要 */
+        .faq-section {
+            border-top: 1px solid #e5e7e3;
+            padding: 40px 0 32px;
+        }
+
+        .faq-section h2 {
+            font-size: 1.4rem;
+            font-weight: 450;
+            margin-bottom: 20px;
+            color: #1e2e2b;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+        }
+
+        .faq-item .q {
+            font-weight: 480;
+            font-size: 0.98rem;
+            color: #1c2f2a;
+            margin-bottom: 4px;
+        }
+
+        .faq-item .a {
+            font-size: 0.92rem;
+            color: #4b6259;
+            padding-left: 12px;
+            border-left: 2px solid #d6ddd4;
+        }
+
+        .faq-item .a a {
+            color: #1d3a32;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #c2ccc2;
+        }
+
+        .faq-item .a a:hover {
+            text-decoration-color: #1d3a32;
+        }
+
+        /* 再次访问收藏提示 */
+        .reminder {
+            background: #f4f6f0;
+            border-radius: 40px;
+            padding: 20px 28px;
+            margin: 16px 0 32px;
+            font-size: 0.95rem;
+            color: #2b423b;
+            border: 1px solid #e0e4da;
+        }
+
+        .reminder span {
+            background: #e0e7db;
+            padding: 1px 10px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            margin-right: 12px;
+        }
+
+        /* 底部 */
+        .footer {
+            border-top: 1px solid #e6e9e2;
+            padding: 28px 0 36px;
+            margin-top: auto;
+            font-size: 0.85rem;
+            color: #677a6f;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #3b554a;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* 响应式 */
+        @media (max-width: 560px) {
+            .container {
+                padding: 0 18px;
+            }
+
+            .nav {
+                flex-direction: column;
+                align-items: flex-start;
+                padding-top: 20px;
+            }
+
+            .nav-links {
+                gap: 16px;
+                flex-wrap: wrap;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 1.65rem;
+            }
+
+            .hero p {
+                font-size: 0.98rem;
+            }
+
+            .scene-card {
+                padding: 22px 20px;
+            }
+
+            .reminder {
+                padding: 16px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.4rem;
+            }
+
+            .scene-card h3 {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部导航 -->
+        <div class="nav">
+            <div class="nav-brand">v体育</div>
+            <div class="nav-links">
+                <a href="#">场景</a>
+                <a href="#">收藏</a>
+                <a href="#">说明</a>
+            </div>
+        </div>
+
+        <!-- 核心介绍 hero -->
+        <div class="hero">
+            <h1>轻量导航 · 常回来看看</h1>
+            <p>
+                再次访问一个熟悉的地方，总带着一点预估和期待。<a href="https://sports-v.com" class="highlight-link">v体育</a> 
+                就是那个值得加入书签、反复回来翻一翻的角落。没有繁杂的铺陈，只有持续更新的动态与赛事脉络。
+            </p>
+        </div>
+
+        <!-- 收藏与再次访问提示 -->
+        <div class="reminder">
+            <span>🔄</span> 把站点收藏在浏览器书签栏，下次想看时不必重新搜索。也欢迎顺手分享给身边同样关注体育的朋友。
+        </div>
+
+        <!-- 三个场景模块 -->
+        <div class="scenes">
+            <div class="scene-card">
+                <h3>📋 赛前速览 · 几分钟理清对阵</h3>
+                <p>
+                    比赛日之前，习惯性打开收藏夹里的<a href="https://sports-v.com" style="color: #1f3a31; text-decoration: underline; text-underline-offset: 3px;">v体育</a>，
+                    快速过一遍首发、伤病与近期交锋。不拖沓，信息直接呈现，帮你节省翻找的时间。
+                </p>
+                <div class="tag"># 日常浏览</div>
+            </div>
+
+            <div class="scene-card">
+                <h3>⏳ 中场休息 · 随手翻翻过去</h3>
+                <p>
+                    中场无聊时，很多人会切回历史页面，看看之前收藏的经典复盘或赛季回顾。
+                    再次访问同一个链接，总能翻出一些之前没留意的细节。
+                </p>
+                <div class="tag"># 闲时回顾</div>
+            </div>
+
+            <div class="scene-card">
+                <h3>📌 持续关注 · 不变的入口</h3>
+                <p>
+                    联赛周期长，保持关注比临时查找更省心。把<a href="https://sports-v.com" style="color: #1f3a31; text-decoration: underline; text-underline-offset: 3px;">v体育</a>
+                    放在浏览器的常用标签组里，每次点开都是熟悉的结构，不用重新适应。
+                </p>
+                <div class="tag"># 长期收藏</div>
+            </div>
+        </div>
+
+        <!-- 常见说明 (FAQ 摘要) -->
+        <div class="faq-section">
+            <h2>一些常见的说明</h2>
+
+            <div class="faq-item">
+                <div class="q">— 为什么值得再次回来？</div>
+                <div class="a">
+                    内容会随着联赛和赛季推进保持更新，不是静态的展示页。隔一段时间再来看，往往会有新的信息或整理。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="q">— 怎样最快找到之前的浏览位置？</div>
+                <div class="a">
+                    浏览器书签或历史记录都可直接跳转。推荐使用「<a href="https://sports-v.com">v体育</a>」作为书签名称，一目了然。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="q">— 页面会频繁变动布局吗？</div>
+                <div class="a">
+                    不会。导航和主要板块保持稳定，只对内容做更新迭代，保证每次回来仍能快速上手。
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="q">— 收藏后有什么要注意的？</div>
+                <div class="a">
+                    建议定期检查书签是否仍有效，同时留意域名是否正常。目前域名 <a href="https://sports-v.com">v体育</a> 长期使用。
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部 -->
+        <div class="footer">
+            <a href="https://sports-v.com">v体育</a> · 常回来看看 · 保持关注
+        </div>
+    </div>
+</body>
+</html>
